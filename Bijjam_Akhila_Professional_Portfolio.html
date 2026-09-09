@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Professional portfolio of Bijjam Akhila - Computer Science Engineering student.">
+<title>Bijjam Akhila | Computer Science Portfolio</title>
+<style>
+:root{
+  --bg:#07111f; --card:#0d1b2a; --card2:#102238; --text:#eef6ff;
+  --muted:#a9bbcf; --accent:#4cc9f0; --accent2:#7b61ff; --border:rgba(255,255,255,.1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Segoe UI,Arial,sans-serif;background:linear-gradient(135deg,#050b14,#071a2c 55%,#10102b);color:var(--text);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.container{width:min(1100px,92%);margin:auto}
+nav{position:fixed;top:0;left:0;right:0;z-index:20;background:rgba(5,11,20,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:1.15rem;letter-spacing:.5px}.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:26px;list-style:none}.nav-links a{color:var(--muted);font-size:.95rem}.nav-links a:hover{color:var(--accent)}
+.hero{min-height:100vh;display:grid;place-items:center;padding:120px 0 70px;position:relative;overflow:hidden}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(70px);opacity:.3}
+.hero:before{width:320px;height:320px;background:#4cc9f0;right:-100px;top:120px}.hero:after{width:280px;height:280px;background:#7b61ff;left:-100px;bottom:40px}
+.hero-grid{display:grid;grid-template-columns:1.4fr .8fr;gap:50px;align-items:center;position:relative;z-index:1}
+.badge{display:inline-block;padding:8px 14px;border:1px solid rgba(76,201,240,.35);border-radius:999px;color:var(--accent);background:rgba(76,201,240,.08);margin-bottom:20px}
+h1{font-size:clamp(3rem,8vw,6rem);line-height:.95;letter-spacing:-4px;margin-bottom:20px}
+.gradient{background:linear-gradient(90deg,var(--accent),#b48cff);-webkit-background-clip:text;color:transparent}
+.hero p{max-width:650px;color:var(--muted);font-size:1.1rem}
+.buttons{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.btn{padding:13px 20px;border-radius:10px;border:1px solid var(--border);font-weight:700}
+.primary{background:linear-gradient(90deg,var(--accent),#6c7cff);color:#04101b;border:none}
+.secondary:hover{border-color:var(--accent);color:var(--accent)}
+.profile-card{background:linear-gradient(145deg,rgba(16,34,56,.9),rgba(13,27,42,.8));border:1px solid var(--border);border-radius:24px;padding:34px;box-shadow:0 25px 70px rgba(0,0,0,.25)}
+.initials{width:130px;height:130px;border-radius:30px;display:grid;place-items:center;font-size:3rem;font-weight:900;margin-bottom:22px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#06101b}
+.stat{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--border);color:var(--muted)}.stat b{color:var(--text)}
+section{padding:95px 0}.section-title{font-size:2.3rem;margin-bottom:10px}.section-sub{color:var(--muted);margin-bottom:35px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.card{background:rgba(13,27,42,.82);border:1px solid var(--border);border-radius:18px;padding:28px}
+.card p{color:var(--muted)}
+.education{display:grid;gap:18px}.edu{display:grid;grid-template-columns:110px 1fr;gap:20px}.year{color:var(--accent);font-weight:800}.edu h3{margin-bottom:3px}.edu p{color:var(--muted)}
+.skills{display:flex;flex-wrap:wrap;gap:12px}.skill{padding:12px 16px;border-radius:12px;background:var(--card2);border:1px solid var(--border);color:#dce9f5}
+.project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.project{position:relative;overflow:hidden}.project:after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;background:rgba(76,201,240,.1);right:-45px;top:-45px}.tag{display:inline-block;color:var(--accent);font-size:.8rem;font-weight:800;margin-bottom:10px}.project h3{margin-bottom:8px}.project p{margin-bottom:18px}
+.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.cert{min-height:150px}.cert small{color:var(--accent)}
+.contact{text-align:center}.contact-box{max-width:800px;margin:auto}.contact a{color:var(--accent)}
+footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);text-align:center}
+@media(max-width:800px){
+ .nav-links{display:none}.hero-grid,.about,.project-grid,.cert-grid{grid-template-columns:1fr}
+ h1{letter-spacing:-2px}.profile-card{max-width:500px}.edu{grid-template-columns:80px 1fr}
+}
+</style>
+</head>
+<body>
+<nav>
+<div class="container nav-inner">
+<a class="logo" href="#home">Akhila<span>.</span></a>
+<ul class="nav-links">
+<li><a href="#about">About</a></li><li><a href="#education">Education</a></li>
+<li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li>
+<li><a href="#certifications">Certifications</a></li><li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
+
+<header class="hero" id="home">
+<div class="container hero-grid">
+<div>
+<div class="badge">Computer Science Engineering Student</div>
+<h1>Hi, I'm <span class="gradient">Akhila.</span></h1>
+<p>Focused, adaptable, and committed to continuous learning. I enjoy building technology and am currently developing my skills in web application development, frontend, and backend technologies.</p>
+<div class="buttons">
+<a class="btn primary" href="#projects">View My Work</a>
+<a class="btn secondary" href="mailto:bijjamakhila823@gmail.com">Let's Connect</a>
+</div>
+</div>
+<div class="profile-card">
+<div class="initials">BA</div>
+<h2>Bijjam Akhila</h2>
+<p style="color:var(--muted);margin:5px 0 20px">B.Tech — Computer Science & Engineering</p>
+<div class="stat"><span>CGPA / Score</span><b>88.5%</b></div>
+<div class="stat"><span>Graduation</span><b>2028</b></div>
+<div class="stat"><span>Languages</span><b>Telugu · English</b></div>
+</div>
+</div>
+</header>
+
+<main>
+<section id="about">
+<div class="container">
+<h2 class="section-title">About Me</h2>
+<p class="section-sub">A quick introduction</p>
+<div class="about">
+<div class="card"><p>I am a Computer Science student at Dhanekula Institute of Engineering and Technology. I am focused, adaptable, and committed to continuous learning, with a goal of bringing value and excellence to every project I undertake.</p></div>
+<div class="card"><p>My current interests are web application development and learning both frontend and backend technologies. I work with Java, Python, SQL, MySQL, VS Code, and PyCharm.</p></div>
+</div>
+</div>
+</section>
+
+<section id="education">
+<div class="container">
+<h2 class="section-title">Education</h2>
+<p class="section-sub">My academic journey</p>
+<div class="card education">
+<div class="edu"><div class="year">2024–2028</div><div><h3>B.Tech — Computer Science & Engineering</h3><p>Dhanekula Institute of Engineering and Technology, Vijayawada · 88.5%</p></div></div>
+<div class="edu"><div class="year">2022–2024</div><div><h3>Intermediate — MPC</h3><p>CLR Junior College, Cumbum · 93%</p></div></div>
+<div class="edu"><div class="year">2022</div><div><h3>SSC</h3><p>Alpha High School, Cumbum · 87.6%</p></div></div>
+</div>
+</div>
+</section>
+
+<section id="skills">
+<div class="container">
+<h2 class="section-title">Skills</h2>
+<p class="section-sub">Technologies and tools I work with</p>
+<div class="skills">
+<span class="skill">Java</span><span class="skill">Python</span><span class="skill">SQL</span>
+<span class="skill">MySQL</span><span class="skill">VS Code</span><span class="skill">PyCharm</span>
+<span class="skill">Web Development</span><span class="skill">Frontend Learning</span><span class="skill">Backend Learning</span>
+</div>
+</div>
+</section>
+
+<section id="projects">
+<div class="container">
+<h2 class="section-title">Projects & Learning</h2>
+<p class="section-sub">Selected areas I'm building and exploring</p>
+<div class="project-grid">
+<div class="card project"><span class="tag">WEB DEVELOPMENT</span><h3>Personal Portfolio</h3><p>A responsive personal portfolio designed to showcase my education, technical skills, certifications, interests, and contact details.</p></div>
+<div class="card project"><span class="tag">IoT / HARDWARE</span><h3>Water Level Monitoring</h3><p>A water tank monitoring concept with SMS notification, focused on practical automation and real-world problem solving.</p></div>
+<div class="card project"><span class="tag">PYTHON</span><h3>Python Projects</h3><p>Hands-on learning through Python-based projects and experimentation using PyCharm.</p></div>
+<div class="card project"><span class="tag">CONTINUOUS LEARNING</span><h3>AI & Generative AI</h3><p>Exploring artificial intelligence, Generative AI concepts, and modern technology through courses and certifications.</p></div>
+</div>
+</div>
+</section>
+
+<section id="certifications">
+<div class="container">
+<h2 class="section-title">Certifications</h2>
+<p class="section-sub">Courses and credentials</p>
+<div class="cert-grid">
+<div class="card cert"><small>MongoDB</small><h3>AI and Innovation</h3><p>How MongoDB Enables a Resilient AI Strategy</p></div>
+<div class="card cert"><small>Infosys SpringBoard</small><h3>Java Developer Certification</h3><p>Java development certification</p></div>
+<div class="card cert"><small>Google</small><h3>Introduction to Generative AI</h3><p>Foundational Generative AI learning</p></div>
+</div>
+</div>
+</section>
+
+<section id="contact" class="contact">
+<div class="container contact-box">
+<h2 class="section-title">Let's Connect</h2>
+<p class="section-sub">I'm open to learning opportunities, projects, and professional connections.</p>
+<div class="card">
+<p>Email: <a href="mailto:bijjamakhila823@gmail.com">bijjamakhila823@gmail.com</a></p>
+<p style="margin-top:8px">GitHub: <a href="https://github.com/Akhila546" target="_blank">github.com/Akhila546</a></p>
+<p style="margin-top:8px">Location: Andhra Pradesh, India</p>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container">© 2026 Bijjam Akhila · Built with HTML & CSS</div>
+</footer>
+</body>
+</html>
