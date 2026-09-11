@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bijjam Akhila | 3D Interactive Portfolio</title>
+<meta name="description" content="Bijjam Akhila - Computer Science Engineering student portfolio">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;background:#050713;color:#eef2ff;
+  font-family:Inter,Arial,sans-serif;overflow-x:hidden;cursor:default;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:
+    radial-gradient(circle at 15% 15%,rgba(93,83,255,.20),transparent 28%),
+    radial-gradient(circle at 85% 25%,rgba(0,210,255,.13),transparent 25%),
+    radial-gradient(circle at 50% 90%,rgba(255,73,184,.10),transparent 30%);
+}
+#stars{position:fixed;inset:0;z-index:-2;opacity:.7}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:22px 6%;background:linear-gradient(#050713dd,transparent);
+  backdrop-filter:blur(10px);
+}
+.logo{font-family:"Space Grotesk";font-weight:700;font-size:1.25rem;letter-spacing:.5px}
+.logo span{color:#71e8ff}
+nav a{color:#cdd4ee;text-decoration:none;margin-left:25px;font-size:.88rem;transition:.3s}
+nav a:hover{color:#71e8ff}
+.hero{
+  min-height:100vh;display:grid;place-items:center;padding:110px 8% 60px;
+  position:relative;perspective:1000px;
+}
+.hero-inner{max-width:1050px;text-align:center;transform-style:preserve-3d}
+.badge{
+  display:inline-flex;padding:8px 15px;border:1px solid #ffffff22;border-radius:999px;
+  color:#aeb8d8;background:#ffffff08;font-size:.78rem;letter-spacing:1.5px;
+  text-transform:uppercase;animation:float 4s ease-in-out infinite;
+}
+h1{
+  font-family:"Space Grotesk";font-size:clamp(3.5rem,10vw,8rem);
+  line-height:.88;margin:28px 0 22px;letter-spacing:-6px;
+  text-shadow:0 0 35px #635bff55;
+}
+h1 .gradient{
+  background:linear-gradient(100deg,#fff,#78eaff 45%,#9b7bff 75%,#ff72cb);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p{max-width:720px;margin:auto;color:#aeb7d2;font-size:1.05rem;line-height:1.8}
+.cta{margin-top:34px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.btn{
+  color:#fff;text-decoration:none;padding:13px 20px;border-radius:12px;
+  border:1px solid #ffffff22;background:#ffffff0b;transition:.35s;
+  box-shadow:0 8px 30px #0005;
+}
+.btn.primary{background:linear-gradient(135deg,#625bff,#9a67ff);border-color:transparent}
+.btn:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 15px 35px #0008}
+.orb{
+  position:absolute;width:280px;height:280px;border-radius:50%;
+  right:5%;top:24%;opacity:.5;filter:blur(1px);
+  background:radial-gradient(circle at 30% 25%,#fff,#76e8ff 8%,#6a5cff 40%,transparent 68%);
+  animation:orb 8s ease-in-out infinite;transform:translateZ(-80px);
+}
+.orbit{position:absolute;width:420px;height:420px;border:1px solid #ffffff13;border-radius:50%;right:-80px;top:18%;animation:spin 18s linear infinite}
+.orbit:after{content:"";position:absolute;width:12px;height:12px;border-radius:50%;background:#71e8ff;box-shadow:0 0 25px #71e8ff;left:15%;top:6%}
+section{padding:105px 8%;max-width:1250px;margin:auto}
+.section-label{color:#71e8ff;text-transform:uppercase;letter-spacing:3px;font-size:.72rem;margin-bottom:12px}
+h2{font-family:"Space Grotesk";font-size:clamp(2.2rem,5vw,4rem);letter-spacing:-2px;margin-bottom:20px}
+.section-intro{color:#9da7c3;max-width:700px;line-height:1.8;margin-bottom:55px}
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:55px;align-items:center}
+.about-text{font-size:1.08rem;color:#b9c1d8;line-height:2}
+.about-text strong{color:#fff}
+.mini-orb{
+  width:280px;height:280px;margin:auto;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff 0 2%,#7cecff 5%,#7564ff 35%,#160f3d 65%,#050713 72%);
+  box-shadow:0 0 80px #6c63ff44, inset -30px -30px 60px #000;
+  animation:float 5s ease-in-out infinite;
+}
+.skills{display:flex;flex-wrap:wrap;gap:12px}
+.skill{padding:12px 16px;border-radius:999px;border:1px solid #ffffff18;background:#ffffff07;color:#d9def0;transition:.3s}
+.skill:hover{transform:translateY(-5px) rotateX(8deg);border-color:#71e8ff66}
+.timeline{position:relative;margin-top:35px}
+.timeline:before{content:"";position:absolute;left:12px;top:0;bottom:0;width:1px;background:linear-gradient(#71e8ff55,transparent)}
+.item{position:relative;padding:0 0 45px 45px}
+.dot{position:absolute;left:6px;top:4px;width:13px;height:13px;border-radius:50%;background:#71e8ff;box-shadow:0 0 18px #71e8ff}
+.item h3{font-family:"Space Grotesk";font-size:1.2rem}
+.item .date{color:#71e8ff;font-size:.8rem;margin:7px 0}
+.item p{color:#929dbb;line-height:1.7}
+.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cert{padding:25px 5px;border-bottom:1px solid #ffffff18;transition:.35s}
+.cert:hover{transform:translateY(-7px)}
+.cert b{display:block;font-family:"Space Grotesk";font-size:1.05rem;margin-bottom:8px}
+.cert span{color:#78839f;font-size:.85rem}
+.contact{text-align:center;padding-bottom:130px}
+.contact p{color:#9da7c3;line-height:1.8}
+.email{
+  display:inline-block;margin-top:28px;color:#fff;text-decoration:none;
+  font-size:clamp(1rem,3vw,1.4rem);border-bottom:1px solid #71e8ff;padding-bottom:7px
+}
+footer{text-align:center;color:#69738d;font-size:.78rem;padding:25px}
+#cursor{
+  position:fixed;width:18px;height:18px;border:1px solid #71e8ff;border-radius:50%;
+  pointer-events:none;z-index:100;transform:translate(-50%,-50%);
+  transition:width .15s,height .15s,background .15s;mix-blend-mode:screen;
+}
+#cursor-dot{position:fixed;width:4px;height:4px;background:#fff;border-radius:50%;pointer-events:none;z-index:101;transform:translate(-50%,-50%)}
+.reveal{opacity:0;transform:translateY(35px);transition:1s ease}
+.reveal.show{opacity:1;transform:none}
+@keyframes float{50%{transform:translateY(-12px)}}
+@keyframes orb{50%{transform:translate(20px,-20px) scale(1.06)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:800px){
+  nav{padding:18px 5%}nav .links{display:none}
+  .hero{padding-left:6%;padding-right:6%}h1{letter-spacing:-3px}
+  .orb,.orbit{right:-150px;opacity:.25}
+  section{padding:80px 7%}
+  .about-grid{grid-template-columns:1fr}
+  .cert-grid{grid-template-columns:1fr}
+}
+@media(pointer:coarse){#cursor,#cursor-dot{display:none}}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div id="cursor"></div><div id="cursor-dot"></div>
+
+<nav>
+  <div class="logo">A<span>.</span>AKHILA</div>
+  <div class="links">
+    <a href="#about">About</a><a href="#skills">Skills</a><a href="#education">Education</a>
+    <a href="#certifications">Certifications</a><a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="orb"></div><div class="orbit"></div>
+  <div class="hero-inner" id="tilt">
+    <div class="badge">Computer Science • Creative Technologist</div>
+    <h1>Hi, I'm <span class="gradient">Akhila.</span></h1>
+    <p>Focused, adaptable and committed to continuous learning. I love turning ideas into clean digital experiences and exploring what new technology can create.</p>
+    <div class="cta">
+      <a class="btn primary" href="#about">Explore my journey ↓</a>
+      <a class="btn" href="mailto:bijjamakhila823@gmail.com">Let's connect</a>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="reveal">
+  <div class="section-label">01 — About</div>
+  <h2>Curious mind.<br>Continuous learner.</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      I am a <strong>Computer Science Engineering student</strong> focused on building my skills through projects, practice and exploration. I strive to bring <strong>value and excellence</strong> to every project I undertake.
+      <br><br>
+      I am especially interested in <strong>web designing</strong> and discovering new technologies. My goal is to keep learning, experiment with ideas and grow into a versatile technology professional.
+    </div>
+    <div class="mini-orb"></div>
+  </div>
+</section>
+
+<section id="skills" class="reveal">
+  <div class="section-label">02 — Skills</div>
+  <h2>My toolkit.</h2>
+  <p class="section-intro">A growing collection of programming, database and development tools I use while learning and building.</p>
+  <div class="skills">
+    <div class="skill">Java</div><div class="skill">Python</div><div class="skill">SQL</div>
+    <div class="skill">MySQL</div><div class="skill">VS Code</div><div class="skill">PyCharm</div>
+    <div class="skill">Web Designing</div><div class="skill">Problem Solving</div>
+    <div class="skill">Continuous Learning</div>
+  </div>
+</section>
+
+<section id="education" class="reveal">
+  <div class="section-label">03 — Education</div>
+  <h2>The learning path.</h2>
+  <div class="timeline">
+    <div class="item"><span class="dot"></span><h3>B.Tech — Computer Science & Engineering</h3><div class="date">2024 — 2028 · Vijayawada · 88.5%</div><p>Dhanekula Institute of Engineering and Technology</p></div>
+    <div class="item"><span class="dot"></span><h3>Intermediate — MPC</h3><div class="date">2022 — 2024 · Cumbum · 93%</div><p>CLR Junior College</p></div>
+    <div class="item"><span class="dot"></span><h3>SSC</h3><div class="date">2022 · Cumbum · 87.6%</div><p>Alpha High School</p></div>
+  </div>
+</section>
+
+<section id="certifications" class="reveal">
+  <div class="section-label">04 — Certifications</div>
+  <h2>Learning beyond class.</h2>
+  <div class="cert-grid">
+    <div class="cert"><b>AI and Innovation</b><span>How MongoDB Enables a Resilient AI Strategy · MongoDB</span></div>
+    <div class="cert"><b>Java Developer Certification</b><span>Infosys SpringBoard</span></div>
+    <div class="cert"><b>Introduction to Generative AI</b><span>Google</span></div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="section-label">05 — Languages & Interests</div>
+  <h2>Beyond the code.</h2>
+  <p class="section-intro"><strong>Languages:</strong> Telugu · English<br><br><strong>Interests:</strong> Web designing · New technologies</p>
+</section>
+
+<section id="contact" class="contact reveal">
+  <div class="section-label">06 — Contact</div>
+  <h2>Let's create something.</h2>
+  <p>Have an idea, opportunity or project to discuss?<br>I'd be happy to connect and learn together.</p>
+  <a class="email" href="mailto:bijjamakhila823@gmail.com">bijjamakhila823@gmail.com</a>
+  <p style="margin-top:18px">+91 78158 76455 · Surepalli, Cumbum, Prakasam</p>
+</section>
+
+<footer>© <span id="year"></span> Bijjam Akhila · Designed & built with HTML, CSS & JavaScript</footer>
+
+<script>
+const canvas=document.getElementById("stars"),ctx=canvas.getContext("2d");
+let w,h,stars=[];
+function resize(){
+  w=canvas.width=innerWidth*devicePixelRatio; h=canvas.height=innerHeight*devicePixelRatio;
+  canvas.style.width=innerWidth+"px";canvas.style.height=innerHeight+"px";
+  stars=Array.from({length:Math.min(180,Math.floor(innerWidth/7))},()=>({
+    x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5+.3,s:Math.random()*.25+.05
+  }));
+}
+function draw(){
+  ctx.clearRect(0,0,w,h);
+  ctx.fillStyle="#fff";
+  stars.forEach(s=>{
+    s.y-=s.s*devicePixelRatio;if(s.y<0)s.y=h;
+    ctx.globalAlpha=.25+Math.random()*.45;ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r*devicePixelRatio,0,Math.PI*2);ctx.fill();
+  });
+  requestAnimationFrame(draw);
+}
+resize();addEventListener("resize",resize);draw();
+
+const reveal=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")});
+},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(x=>reveal.observe(x));
+
+const cursor=document.getElementById("cursor"),dot=document.getElementById("cursor-dot");
+addEventListener("mousemove",e=>{
+  cursor.style.left=e.clientX+"px";cursor.style.top=e.clientY+"px";
+  dot.style.left=e.clientX+"px";dot.style.top=e.clientY+"px";
+});
+document.querySelectorAll("a,.skill").forEach(el=>{
+  el.addEventListener("mouseenter",()=>{cursor.style.width="34px";cursor.style.height="34px";cursor.style.background="#71e8ff22"});
+  el.addEventListener("mouseleave",()=>{cursor.style.width="18px";cursor.style.height="18px";cursor.style.background="transparent"});
+});
+
+const tilt=document.getElementById("tilt");
+document.querySelector(".hero").addEventListener("mousemove",e=>{
+  const r=e.currentTarget.getBoundingClientRect();
+  const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+  tilt.style.transform=`rotateY(${x*5}deg) rotateX(${-y*5}deg)`;
+});
+document.querySelector(".hero").addEventListener("mouseleave",()=>tilt.style.transform="");
+
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
